@@ -1,15 +1,18 @@
 defmodule Block do
 
-  def main(threshold) do
-    threshold = String.to_integer(threshold)
-    {:ok, pid} = GenServer.start_link(__MODULE__, [])
-    update_previous_hash(pid, "genesis")
-    mine_block(pid, threshold)
-  end
+  # def main(threshold) do
+  #   threshold = String.to_integer(threshold)
+  #   {:ok, pid} = GenServer.start_link(__MODULE__, [])
+  #   update_previous_hash(pid, "genesis")
+  #   mine_block(pid, threshold)
+  # end
   use GenServer
   def init([]) do
     timestamp = :erlang.system_time / 1.0e6 |> round
     {:ok, {"", timestamp, [], 0, ""}}
+  end
+  def start_link() do
+    GenServer.start_link(__MODULE__, [])
   end
   def calculate_hash(string) do
     :crypto.hash(:sha, string) |> Base.encode16

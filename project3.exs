@@ -1,2 +1,2 @@
 [threshold] = System.argv
-Block.main(threshold)
+BlockChain.main(threshold)
