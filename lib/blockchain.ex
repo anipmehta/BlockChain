@@ -16,12 +16,13 @@ defmodule BlockChain do
   def main(threshold) do
     threshold = String.to_integer(threshold)
     {:ok, pid} = GenServer.start_link(__MODULE__, [])
-    minePendingTransactions(pid, "anip-address", threshold)
-    IO.inspect(get_latest_block(pid))
+    mine_pending_transactions(pid, "anip-address", threshold)
+    mine_pending_transactions(pid, "anip-address", threshold)
   end
   def init([]) do
     timestamp = :erlang.system_time / 1.0e6 |> round
-    {:ok, {[], 1, [], 0}}
+    genesis_block = create_genesis_block()
+    {:ok, {[] ++ [genesis_block], 1, [], 0}}
   end
 
   def update_mining_reward(pid, {:updateMiningReward, reward}) do
@@ -51,13 +52,19 @@ defmodule BlockChain do
   def add_transaction(pid, transaction) do
     GenServer.cast(pid, {:addTransaction, transaction})
   end
-  def minePendingTransactions(pid, miningRewardAddress, threshold) do
+  def mine_pending_transactions(pid, miningRewardAddress, threshold) do
     {:ok, block_pid} = Block.start_link()
     Block.mine_block(block_pid, threshold)
     latest_block_pid = get_latest_block(pid)
     latest_block_hash = Block.get_hash(latest_block_pid)
     Block.update_previous_hash(block_pid, latest_block_hash)
     add_block(pid, block_pid)
+  end
+  def create_genesis_block() do
+    {:ok, block_pid} = Block.start_link()
+    Block.update_previous_hash(block_pid, "")
+    Block.update_hash(block_pid, "genesis_block")
+    block_pid
   end
   def handle_call({:getPendingTransactions}, _from, state) do
     {_, _, transactions, _} = state
