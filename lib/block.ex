@@ -1,6 +1,13 @@
 defmodule Block do
+
+  def main(threshold) do
+    threshold = String.to_integer(threshold)
+    {:ok, pid} = GenServer.start_link(__MODULE__, [])
+    update_previous_hash(pid, "genesis")
+    mine_block(pid, threshold)
+  end
   use GenServer
-  def init() do
+  def init([]) do
     timestamp = :erlang.system_time / 1.0e6 |> round
     {:ok, {"", timestamp, [], 0, ""}}
   end
@@ -9,19 +16,23 @@ defmodule Block do
   end
   def mine_block(pid, threshold) do
     previous_hash = get_previous_hash(pid)
-    time_stamp = get_time_stamp(pid)
+    time_stamp = Integer.to_string(get_time_stamp(pid))
     transactions = List.to_string(get_transactions(pid))
     nonce = get_nonce(pid)
-    hash = generate_hash(threshold, pid, previous_hash <> time_stamp <> transactions <> nonce)
+    hash = generate_hash(threshold, pid, previous_hash, time_stamp, transactions, nonce)
+    update_hash(pid, hash)
   end
   def generate_hash(threshold, pid, previous_hash, time_stamp, transactions, nonce) do
     hash = calculate_hash(previous_hash <> time_stamp <> transactions <> Integer.to_string(nonce))
-    string_of_zeroes = Enum.join(0...threshold-1, "0")
-    if String.slice(hash, 0...threshold-1) == string_of_zeroes
-      IO.puts('New Block Mined.......')
+    list = Enum.to_list(1..threshold)
+    string_of_zeroes = Enum.reduce(list, "", fn(x, acc) -> "0" <> acc end)
+    if String.slice(hash, 0..threshold-1) == string_of_zeroes do
+      IO.puts("Congrats! New Block Mined with hash = " <> hash)
       update_nonce(pid, nonce)
       hash
-    generate_hash(threshold, pid, previous_hash, time_stamp, transactions, nonce+1)
+    else
+      generate_hash(threshold, pid, previous_hash, time_stamp, transactions, nonce+1)
+    end
   end
   def get_nonce(pid) do
     GenServer.call(pid, {:getNonce})
@@ -64,8 +75,8 @@ defmodule Block do
     {previous_hash, _, _, _, _} = state
     {:reply, previous_hash, state}
   end
-  def handle_call({:getTranscations}, _from, state) do
-    {_, _, _, transcations, _} = state
+  def handle_call({:getTransactions}, _from, state) do
+    {_, _, transcations, _, _} = state
     {:reply, transcations, state}
   end
   def handle_call({:getTimeStamp}, _from, state) do
