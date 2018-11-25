@@ -42,6 +42,18 @@ All the testcases are included in a separate directory Test
 ```
 #### 2.transaction_test.exs
 ```
-1) 
+1) test "transaction validity" - It tests the validity of the transaction
+User a sends $50 to user b signing with its public_key
+Here we verify that the transaction was indeed signed by User a.
+
+2) test "detecting invalid transaction when receiver impersonates the sender" - It tests successful flagging of invalid transactions.
+   User a sends $50 to user b signing with its public_key
+   User b falsely claims that it is he who sent the money to himself
+   We are able to verify that the transaction was not signed by User b.
+  
+3)test "detecting invalid transaction when a different user impersonates the sender" - It too tests successful flagging of invalid      transactions.
+   User a sends $50 to user b signing with its public_key.
+   User C falsely claims that it is he who sent the money.
+   We are able to verify that the transaction was not signed by User C
 ```
 
