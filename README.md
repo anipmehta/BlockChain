@@ -24,7 +24,13 @@ end
 ** Implementation of Bitcoin Protocol in Elixir**
 
 Functionalities Implemented:
-1) Mining of blocks with given difficulty/threshold
-2) Adding a transaction to the blockchain
-3) Verify the transaction and ability to display the User's balance(wallet)
+1) Mining of blocks with given difficulty/threshold using Bitcoin Protocol
+2) Adding transactions to the blockchain
+3) Verify the validity of transactions and ability to display the User's balance(wallet)
+4) Bonus: Mining reward functionality has also been implemented to reward the miners of the block
+
+Unit Testcases:
+
+1.block_test.exs
+
 
