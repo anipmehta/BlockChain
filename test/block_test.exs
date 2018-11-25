@@ -1,6 +1,8 @@
 defmodule BlockTest do
   use ExUnit.Case
   doctest Block
+
+  #validates that the hash of the mined block with threshold 5 starts with 5 zeroes
    test "check hash-code with difficulty 5" do
      {:ok, pid} = Block.start_link()
      previous_hash = Block.get_previous_hash(pid)
@@ -11,6 +13,7 @@ defmodule BlockTest do
      assert String.match?(hash, ~r/^00000/);
     end
 
+#validates that the hash of the mined block with threshold 3 starts with 3 zeroes
     test "check hash-code with difficulty 3" do
       {:ok, pid} = Block.start_link()
       previous_hash = Block.get_previous_hash(pid)
@@ -21,10 +24,13 @@ defmodule BlockTest do
       assert String.match?(hash, ~r/^000/);
      end
 
+#checks the validity of a block with no transactions
      test "block with no Transactions" do
        {:ok, pid} = Block.start_link()
        assert Block.is_valid(pid) == true
      end
+
+    # verifies that all transactions done within a block are valid
      test "check valid block" do
        {:ok, user_a_id} = User.start_link()
        {:ok, user_b_id} = User.start_link()
@@ -40,7 +46,8 @@ defmodule BlockTest do
        assert Block.is_valid(pid) == true
      end
 
-     test "check invalidty of block" do
+#verifies that a block with invalid transactions is flagged as an invalid block
+     test "detect invalid block" do
        {:ok, user_a_id} = User.start_link()
        {:ok, user_b_id} = User.start_link()
        user_a_address = User.get_public_key(user_a_id)

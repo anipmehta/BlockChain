@@ -20,7 +20,7 @@ defmodule TransactionTest do
    #User a sends $50 to user b signing with its public_key
    #User b falsely claims that it is he who sent the money to himself
    #We are able to verify that the transaction was not signed by User b
-    test "detecting invalid transaction when verifying with the to_address" do
+    test "detecting invalid transaction when receiver impersonates the sender" do
       {:ok, user_a_id} = User.start_link()
       user_a_address = User.get_public_key(user_a_id)
       {:ok, user_b_id} = User.start_link()
@@ -31,7 +31,11 @@ defmodule TransactionTest do
       assert Transaction.verify_transaction(txn_id, user_b_address) == false
     end
 
-    test "detecting invalid transaction when a different user tries to verify the transaction signed by other user" do
+    #successfully flagging invalid transactions
+    #User a sends $50 to user b signing with its public_key
+    #User C falsely claims that it is he who sent the money
+    #We are able to verify that the transaction was not signed by User C
+    test "detecting invalid transaction when a different user impersonates the sender" do
       {:ok, user_a_id} = User.start_link()
       user_a_address = User.get_public_key(user_a_id)
       {:ok, user_b_id} = User.start_link()
