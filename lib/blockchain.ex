@@ -9,9 +9,11 @@ defmodule BlockChain do
     # IO.inspect(User.get_public_key(user_a_id))
     {:ok, user_b_id} = User.start_link()
     add_user(pid, user_b_id)
-    {:ok, txn_a_id} = Transaction.start_link(User.get_public_key(user_a_id), User.get_public_key(user_b_id), 100)
+    {:ok, txn_a_id} = Transaction.start_link(User.get_public_key(user_a_id), User.get_public_key(user_b_id), 100.00)
+    User.sign_transaction(user_a_id, txn_a_id)
     add_transaction(pid, txn_a_id)
-    {:ok, txn_b_id} = Transaction.start_link(User.get_public_key(user_b_id), User.get_public_key(user_a_id), 100)
+    {:ok, txn_b_id} = Transaction.start_link(User.get_public_key(user_b_id), User.get_public_key(user_a_id), 100.00)
+    User.sign_transaction(user_b_id, txn_b_id)
     add_transaction(pid, txn_b_id)
     # IO.inspect(txn_a_id)
     # IO.inspect(Transaction.get_amount(txn_a_id))
@@ -19,6 +21,7 @@ defmodule BlockChain do
     IO.inspect(User.get_amount(user_a_id))
     IO.inspect(User.get_amount(user_b_id))
     block_2_pid = mine_pending_transactions(pid, "anip-address", threshold)
+    IO.inspect(Block.is_valid(block_2_pid))
     IO.inspect("updated balances.....")
     IO.inspect(User.get_amount(user_a_id))
     IO.inspect(User.get_amount(user_b_id))
@@ -43,8 +46,14 @@ defmodule BlockChain do
     transactions = Block.get_transactions(block_pid)
     IO.inspect("processing all pending transactions.....")
     Enum.each(transactions, fn txn_id ->
-      # TODO check if valid transaction
-      process_single_transaction(pid, txn_id)
+      # TODO check if valid transactions
+      is_valid = Transaction.verify_transaction(txn_id, Transaction.get_from_address(txn_id))
+      if is_valid do
+        process_single_transaction(pid, txn_id)
+      else
+        IO.inspect("Invalid transaction signature does not match, adding it back to the pool of unconfirmed transactions..")
+        add_transaction(pid, txn_id)
+      end
     end)
   end
   def process_single_transaction(pid, txn_id) do
@@ -95,8 +104,8 @@ defmodule BlockChain do
     Block.update_previous_hash(block_pid, latest_block_hash)
     add_block(pid, block_pid)
     Block.update_transactions(block_pid, get_pending_transactions(pid))
-    process_block_transactions(pid, block_pid)
     update_pending_transcations(pid, [])
+    process_block_transactions(pid, block_pid)
     block_pid
   end
   def create_genesis_block() do

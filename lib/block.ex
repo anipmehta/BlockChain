@@ -66,6 +66,14 @@ defmodule Block do
   def update_nonce(pid, nonce) do
     GenServer.cast(pid, {:updateNonce, nonce})
   end
+
+  def is_valid(pid) do
+    transactions = get_transactions(pid)
+    flag = Enum.reduce(transactions, true, fn(txn_id, acc) ->
+      acc and Transaction.verify_transaction(txn_id, Transaction.get_from_address(txn_id))
+    end)
+    flag
+  end
   #handlers
 
   def handle_call({:getNonce}, _from, state) do

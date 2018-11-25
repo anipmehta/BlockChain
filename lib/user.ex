@@ -10,6 +10,12 @@ defmodule User do
   def get_private_key(pid) do
     GenServer.call(pid, {:getPrivateKey})
   end
+  def sign_transaction(pid, txn_id) do
+    amount = Transaction.get_amount(txn_id)
+    private_key = get_private_key(pid)
+    sign = :crypto.sign(:ecdsa,:sha256,Float.to_string(amount),[private_key,:secp256k1])
+    Transaction.update_sign(txn_id, sign)
+  end
   def get_public_key(pid) do
     GenServer.call(pid, {:getPublicKey})
   end
