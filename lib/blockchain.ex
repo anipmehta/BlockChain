@@ -38,6 +38,9 @@ defmodule BlockChain do
     genesis_block = create_genesis_block()
     {:ok, {[] ++ [genesis_block], 1, [], 0, %{}}}
   end
+  def start_link() do
+    GenServer.start_link(__MODULE__, [])
+  end
 
   def update_mining_reward(pid, reward) do
     GenServer.cast(pid, {:updateMiningReward, reward})
