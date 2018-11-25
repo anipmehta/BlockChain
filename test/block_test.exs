@@ -2,7 +2,7 @@ defmodule BlockTest do
   use ExUnit.Case
   doctest Block
 
-  #validates that the hash of the mined block starts with 5 zeroes
+  #validates that the hash of the mined block with threshold 5 starts with 5 zeroes
    test "check hash-code with difficulty 5" do
      {:ok, pid} = Block.start_link()
      previous_hash = Block.get_previous_hash(pid)
@@ -13,7 +13,7 @@ defmodule BlockTest do
      assert String.match?(hash, ~r/^00000/);
     end
 
-#validates that the hash of the mined block starts with 3 zeroes
+#validates that the hash of the mined block with threshold 3 starts with 3 zeroes
     test "check hash-code with difficulty 3" do
       {:ok, pid} = Block.start_link()
       previous_hash = Block.get_previous_hash(pid)
