@@ -3,17 +3,17 @@ defmodule Transaction do
   def init([from_address, to_address, amount]) do
     {:ok, {from_address, to_address, amount}}
   end
-  def start_link() do
-    GenServer.start_link(__MODULE__, [])
+  def start_link(from_address, to_address, amount) do
+    GenServer.start_link(__MODULE__, [from_address, to_address, amount])
   end
   def get_amount(pid) do
-  GenServer.call(pid, :getAmount)
+  GenServer.call(pid, {:getAmount})
   end
-  def get_from_adress(pid) do
-    GenServer.call(pid, :getFromAddress)
+  def get_from_address(pid) do
+    GenServer.call(pid, {:getFromAddress})
   end
   def get_to_address(pid) do
-    GenServer.call(pid, :getToAddress)
+    GenServer.call(pid, {:getToAddress})
   end
   def handle_call({:getFromAddress}, _from, state) do
     {from_address, _, _} = state

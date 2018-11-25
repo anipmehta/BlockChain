@@ -16,7 +16,7 @@ defmodule User do
   def get_amount(pid) do
     GenServer.call(pid, {:getAmount})
   end
-  def upadte_amount(pid, amount) do
+  def update_amount(pid, amount) do
     GenServer.cast(pid, {:updateAmount, amount})
   end
   def handle_call({:getPrivateKey}, _from, state) do
@@ -31,7 +31,7 @@ defmodule User do
     {_, _ , amount} = state
     {:reply, amount, state}
   end
-  def handle_cast({:updateAmount, amount}, _from, state) do
+  def handle_cast({:updateAmount, amount}, state) do
     {a, b, _} = state
     state = {a, b, amount}
     {:noreply, state}

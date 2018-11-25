@@ -37,6 +37,8 @@ defmodule Block do
       generate_hash(threshold, pid, previous_hash, time_stamp, transactions, nonce+1)
     end
   end
+
+
   def get_nonce(pid) do
     GenServer.call(pid, {:getNonce})
   end
