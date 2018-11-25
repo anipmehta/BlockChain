@@ -32,7 +32,7 @@ end
 ### Unit Testcases: 
 All the testcases are included in a separate directory Test
 
-### block_test.exs : 
+#### 1.block_test.exs : 
 ```
 1)test "check hash-code with difficulty 5" - It validates that the hash of the mined block with threshold 5 starts with 5 zeroes
 2) test "check hash-code with difficulty 3" - It validates that the hash of the mined block with threshold 3 starts with 3 zeroes
@@ -40,5 +40,8 @@ All the testcases are included in a separate directory Test
 4)test "check valid block"  - It verifies that all transactions done within a block are valid
 5)test "detect invalid block" - It verifies that a block with invalid transactions is flagged as an invalid block
 ```
-
+#### 2.transaction_test.exs
+```
+1) 
+```
 
