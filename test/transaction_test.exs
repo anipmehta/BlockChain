@@ -31,7 +31,7 @@ defmodule TransactionTest do
       assert Transaction.verify_transaction(txn_id, user_b_address) == false
     end
 
-    test "detecting invalid transaction when a different tries to verify the transaction signed by other user" do
+    test "detecting invalid transaction when a different user tries to verify the transaction signed by other user" do
       {:ok, user_a_id} = User.start_link()
       user_a_address = User.get_public_key(user_a_id)
       {:ok, user_b_id} = User.start_link()
