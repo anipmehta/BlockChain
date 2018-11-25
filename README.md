@@ -1,7 +1,6 @@
-# BlockChain
-# BlockChain
+# Project 4.1
 
-**TODO: Add description**
+**BlockChain**
 
 ## Installation
 
@@ -15,7 +14,14 @@ def deps do
   ]
 end
 ```
+# Group Info
+ - Anip Mehta  UFID : 96505636
+ - Aniket Sinha UFID : 69598035
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/blockchain](https://hexdocs.pm/blockchain).
+
+# DOS Project4.1
+
+** Implementation of Bitcoin Protocol in Elixir**
+
+What is working?
+
