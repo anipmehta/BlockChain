@@ -1,6 +1,6 @@
-# Project 4.1
+# BlockChain
 
-**BlockChain**
+**BitCoin Protocol**
 
 ## Installation
 
@@ -23,5 +23,8 @@ end
 
 ** Implementation of Bitcoin Protocol in Elixir**
 
-What is working?
+Functionalities Implemented:
+1) Mining of blocks with given difficulty/threshold
+2) Adding a transaction to the blockchain
+3) Verify the transaction and ability to display the User's balance(wallet)
 
