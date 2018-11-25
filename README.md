@@ -29,8 +29,14 @@ Functionalities Implemented:
 3) Verify the validity of transactions and ability to display the User's balance(wallet)
 4) Bonus: Mining reward functionality has also been implemented to reward the miners of the block
 
-Unit Testcases:
+Unit Testcases: All the testcases are included in a separate directory Test
 
-1.block_test.exs
+block_test.exs : 
+
+1)test "check hash-code with difficulty 5" - It validates that the hash of the mined block with threshold 5 starts with 5 zeroes
+2) test "check hash-code with difficulty 3" - It validates that the hash of the mined block with threshold 3 starts with 3 zeroes
+3)test "block with no Transactions" - It checks the validity of a block with no transact Itions
+4)test "check valid block"  - It verifies that all transactions done within a block are valid
+5)test "detect invalid block" - It verifies that a block with invalid transactions is flagged as an invalid block
 
 
