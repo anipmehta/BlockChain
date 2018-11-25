@@ -21,7 +21,7 @@ end
 
 # DOS Project4.1
 
-##Implementation of Bitcoin Protocol in Elixir
+## Implementation of Bitcoin Protocol in Elixir
 
 ### Functionalities Implemented:
 1) Mining of blocks with given difficulty/threshold using Bitcoin Protocol
