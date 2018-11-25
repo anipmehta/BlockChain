@@ -21,7 +21,11 @@ defmodule BlockTest do
       assert String.match?(hash, ~r/^000/);
      end
 
-     test "check validty of transactions" do
+     test "block with no Transactions" do
+       {:ok, pid} = Block.start_link()
+       assert Block.is_valid(pid) == true
+     end
+     test "check valid block" do
        {:ok, user_a_id} = User.start_link()
        {:ok, user_b_id} = User.start_link()
        user_a_address = User.get_public_key(user_a_id)
@@ -36,7 +40,7 @@ defmodule BlockTest do
        assert Block.is_valid(pid) == true
      end
 
-     test "check invalidty of transactions" do
+     test "check invalidty of block" do
        {:ok, user_a_id} = User.start_link()
        {:ok, user_b_id} = User.start_link()
        user_a_address = User.get_public_key(user_a_id)
