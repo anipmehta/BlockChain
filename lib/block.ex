@@ -38,6 +38,24 @@ defmodule Block do
     end
   end
 
+  def get_balance(pid, user_public_key) do
+    transactions = get_transactions(pid)
+    balance = Enum.reduce(transactions, 0.0, fn(txn_id, acc)->
+      from_address = Transaction.get_from_address(txn_id)
+      to_address = Transaction.get_to_address(txn_id)
+      amount = Transaction.get_amount(txn_id)
+      cond do
+        from_address == user_public_key ->
+          acc - amount
+        to_address == user_public_key ->
+          acc + amount
+        true ->
+          acc
+      end
+    end)
+    balance
+  end
+
 
   def get_nonce(pid) do
     GenServer.call(pid, {:getNonce})

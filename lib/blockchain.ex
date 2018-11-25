@@ -25,6 +25,9 @@ defmodule BlockChain do
     IO.inspect("updated balances.....")
     IO.inspect(User.get_amount(user_a_id))
     IO.inspect(User.get_amount(user_b_id))
+    IO.inspect(is_valid(pid))
+    IO.inspect(get_balance(pid, User.get_public_key(user_a_id)))
+    IO.inspect(get_balance(pid, User.get_public_key(user_b_id)))
 
     # IO.inspect(Block.get_transactions(block_2_pid))
     # IO.inspect(get_pending_transactions(pid))
@@ -39,7 +42,11 @@ defmodule BlockChain do
     GenServer.cast(pid, {:updateMiningReward, reward})
   end
   def get_balance(pid, user_public_key) do
-
+    chain = get_chain(pid)
+    balance = Enum.reduce(chain, 0.0, fn(block, acc)->
+      acc + Block.get_balance(block, user_public_key)
+    end)
+    balance
   end
 
   def process_block_transactions(pid, block_pid) do
@@ -107,6 +114,17 @@ defmodule BlockChain do
     update_pending_transcations(pid, [])
     process_block_transactions(pid, block_pid)
     block_pid
+  end
+  def is_valid(pid) do
+    chain = get_chain(pid)
+    index_list = Enum.to_list(1..Enum.count(chain)-1)
+    is_valid = Enum.reduce(index_list, true, fn(index, acc) ->
+      previous_block = Enum.fetch!(chain, index-1)
+      current_block = Enum.fetch!(chain, index)
+      hash_is_valid = Block.get_hash(previous_block) == Block.get_previous_hash(current_block)
+      acc and hash_is_valid and Block.is_valid(current_block)
+    end)
+    is_valid
   end
   def create_genesis_block() do
     {:ok, block_pid} = Block.start_link()
