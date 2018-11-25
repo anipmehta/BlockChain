@@ -23,6 +23,7 @@ defmodule Block do
     transactions = List.to_string(get_transactions(pid))
     nonce = get_nonce(pid)
     hash = generate_hash(threshold, pid, previous_hash, time_stamp, transactions, nonce)
+    IO.puts("Congrats! New Block Mined with hash = " <> hash)
     update_hash(pid, hash)
   end
   def generate_hash(threshold, pid, previous_hash, time_stamp, transactions, nonce) do
@@ -30,12 +31,20 @@ defmodule Block do
     list = Enum.to_list(1..threshold)
     string_of_zeroes = Enum.reduce(list, "", fn(x, acc) -> "0" <> acc end)
     if String.slice(hash, 0..threshold-1) == string_of_zeroes do
-      IO.puts("Congrats! New Block Mined with hash = " <> hash)
       update_nonce(pid, nonce)
       hash
     else
       generate_hash(threshold, pid, previous_hash, time_stamp, transactions, nonce+1)
     end
+  end
+
+  def recalculate_hash(threshold, pid) do
+    previous_hash = get_previous_hash(pid)
+    time_stamp = Integer.to_string(get_time_stamp(pid))
+    transactions = Integer.to_string(Enum.count(get_transactions(pid)))
+    nonce = get_nonce(pid)
+    hash = Block.generate_hash(threshold, pid, previous_hash, time_stamp, transactions, nonce)
+    update_hash(pid, hash)
   end
 
   def get_balance(pid, user_public_key) do
@@ -88,7 +97,11 @@ defmodule Block do
   def is_valid(pid) do
     transactions = get_transactions(pid)
     flag = Enum.reduce(transactions, true, fn(txn_id, acc) ->
-      acc and Transaction.verify_transaction(txn_id, Transaction.get_from_address(txn_id))
+      if Transaction.get_from_address(txn_id) == "miningReward" do
+        true
+      else
+        acc and Transaction.verify_transaction(txn_id, Transaction.get_from_address(txn_id))
+      end
     end)
     flag
   end

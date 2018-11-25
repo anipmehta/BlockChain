@@ -3,9 +3,10 @@ defmodule BlockChain do
   def main(threshold) do
     threshold = String.to_integer(threshold)
     {:ok, pid} = GenServer.start_link(__MODULE__, [])
-    block_1_pid = mine_pending_transactions(pid, "anip-address", threshold)
+    update_mining_reward(pid, 100.0)
     {:ok, user_a_id} = User.start_link()
     add_user(pid, user_a_id)
+    block_1_pid = mine_pending_transactions(pid, User.get_public_key(user_a_id), threshold)
     # IO.inspect(User.get_public_key(user_a_id))
     {:ok, user_b_id} = User.start_link()
     add_user(pid, user_b_id)
@@ -20,7 +21,7 @@ defmodule BlockChain do
     IO.inspect("original balances.....")
     IO.inspect(User.get_amount(user_a_id))
     IO.inspect(User.get_amount(user_b_id))
-    block_2_pid = mine_pending_transactions(pid, "anip-address", threshold)
+    block_2_pid = mine_pending_transactions(pid, User.get_public_key(user_b_id), threshold)
     IO.inspect(Block.is_valid(block_2_pid))
     IO.inspect("updated balances.....")
     IO.inspect(User.get_amount(user_a_id))
@@ -111,8 +112,10 @@ defmodule BlockChain do
     Block.update_previous_hash(block_pid, latest_block_hash)
     add_block(pid, block_pid)
     Block.update_transactions(block_pid, get_pending_transactions(pid))
+    Block.recalculate_hash(threshold, block_pid)
     update_pending_transcations(pid, [])
-    process_block_transactions(pid, block_pid)
+    {:ok, txn_id} = Transaction.start_link("miningReward", miningRewardAddress, get_mining_reward(pid))
+    add_transaction(pid, txn_id)
     block_pid
   end
   def is_valid(pid) do
