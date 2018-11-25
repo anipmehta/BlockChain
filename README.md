@@ -1,7 +1,6 @@
 # BlockChain
-# BlockChain
 
-**TODO: Add description**
+**BitCoin Protocol**
 
 ## Installation
 
@@ -15,7 +14,17 @@ def deps do
   ]
 end
 ```
+# Group Info
+ - Anip Mehta  UFID : 96505636
+ - Aniket Sinha UFID : 69598035
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/blockchain](https://hexdocs.pm/blockchain).
+
+# DOS Project4.1
+
+** Implementation of Bitcoin Protocol in Elixir**
+
+Functionalities Implemented:
+1) Mining of blocks with given difficulty/threshold
+2) Adding a transaction to the blockchain
+3) Verify the transaction and ability to display the User's balance(wallet)
+
