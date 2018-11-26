@@ -94,3 +94,39 @@ User A mines the first block
    The mining reward for B is placed in the pool of pending transaction and it will reflect in B's account once another block takes up this transaction
    ```
 
+## Instructions
+
+### Input
+Run : 
+```
+mix test
+```
+### Output
+
+You should see all 13 testcases succesfully run with 0 failures (along with some console output).
+```
+Congrats! New Block Mined with hash = 001802F3229C67C4B34686350EABCE0497B648B2
+Congrats! New Block Mined with hash = 001802F3229C67C4B34686350EABCE0497B648B2
+..Congrats! New Block Mined with hash = 0000305AE15D9BC0547497EA1252BF37D4535390
+Congrats! New Block Mined with hash = 00009912E737A9B04A05F5C9FA38CB802FBACC8B
+30.0
+20.0
+50.0
+Congrats! New Block Mined with hash = 00009912E737A9B04A05F5C9FA38CB802FBACC8B
+20.0
+20.0
+160.0
+.Congrats! New Block Mined with hash = 00BBC24A2E77803889AC9C1FC431CD29BE152C56
+Congrats! New Block Mined with hash = 00BBC24A2E77803889AC9C1FC431CD29BE152C56
+.Congrats! New Block Mined with hash = 00BBC24A2E77803889AC9C1FC431CD29BE152C56
+Congrats! New Block Mined with hash = 00BBC24A2E77803889AC9C1FC431CD29BE152C56
+.........
+
+Finished in 5.5 seconds
+13 tests, 0 failures
+
+```
+
+## Bonus
+
+The functionality of providing mining rewards to the miners of the Blocks has been implemented. We have demonstrated this functionality in Functional Test 2. Each time a User mines a new block, he/she is awarded a mining reward(in our test we have considered it to be $100). This mining reward is added to the pending transactions and is owned by the user once this transaction is processed by any block. 
