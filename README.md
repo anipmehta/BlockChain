@@ -58,4 +58,39 @@ Here we verify that the transaction was indeed signed by User a.
 ```
 #### 3.blockchain_test.exs
 ```
+1)test "starting a chain with genesis block" - It tests successful initialization of BlockChain.
+
+2)test "valid block chain" - It tests validity of the BlockChain by verifying that the blocks are themselves valid
+ and that they are in correct order i.e. previous hash of the current block corresponds to the hash of the previous block.
+ 
+3)test "detect invalid block chain" - It detects that the block chain is invalid given one block is invalid.
+```
+
+### Functional Tests
+
+All the functional tests are part of the file blockchain_test.exs
+
+#### 1.Functional Test 1 : Simple scenario
+```
+test "transact 50.0 from user_a to user_b" :
+User A sends $50 to User B
+#User A's balance reduces by $50 while B gains $50
+``` 
+#### 2.Functional Test 2: Include mining reward (Bonus)
+```
+test "complex transactions scenario with multiple block and mining Rewards" : 
+User A mines the first block
+  Transactions :
+   A sends $70 to B
+   B sends $50 to case
+  Balance at this point is checked : A:30 B:20 C:50 (A received $100 mining reward)
+  C mines the next Block
+  C sends $20 to B
+  A sends $20 to C
+  B sends $10 to A
+  B mines the next block
+  At the end of all these transactions the balance should be :
+   A :20  B:20  C :160 (C received $100 mining reward)
+   The mining reward for B is placed in the pool of pending transaction and it will reflect in B's account once another block takes up this transaction
+   ```
 
