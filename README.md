@@ -56,6 +56,6 @@ Here we verify that the transaction was indeed signed by User a.
    User C falsely claims that it is he who sent the money.
    We are able to verify that the transaction was not signed by User C
 ```
-### 3.blockchain_test.exs
+#### 3.blockchain_test.exs
 ```
 
