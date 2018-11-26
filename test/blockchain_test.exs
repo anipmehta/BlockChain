@@ -29,7 +29,7 @@ defmodule BlockChainTest do
     BlockChain.add_transaction(block_chain_pid, txn_a_id)
 
     {:ok, txn_b_id} = Transaction.start_link(user_b_address, user_c_address, 50.0)
-    User.sign_transaction(user_b_id, txn_a_id)
+    User.sign_transaction(user_b_id, txn_b_id)
     BlockChain.add_transaction(block_chain_pid, txn_b_id)
     BlockChain.mine_pending_transactions(block_chain_pid, user_c_address, difficulty)
 
@@ -47,11 +47,11 @@ defmodule BlockChainTest do
     BlockChain.add_transaction(block_chain_pid, txn_c_id)
 
     {:ok, txn_d_id} = Transaction.start_link(user_a_address, user_c_address, 20.0)
-    User.sign_transaction(user_a_id, txn_a_id)
+    User.sign_transaction(user_a_id, txn_d_id)
     BlockChain.add_transaction(block_chain_pid, txn_d_id)
 
     {:ok, txn_e_id} = Transaction.start_link(user_b_address, user_a_address, 10.0)
-    User.sign_transaction(user_b_id, txn_a_id)
+    User.sign_transaction(user_b_id, txn_e_id)
     BlockChain.add_transaction(block_chain_pid, txn_e_id)
     BlockChain.mine_pending_transactions(block_chain_pid, user_b_address, difficulty)
 
@@ -61,7 +61,7 @@ defmodule BlockChainTest do
     IO.inspect(user_a_balance)
     IO.inspect(user_b_balance)
     IO.inspect(user_c_balance)
-    check2 = user_a_balance == 20.0 and user_b_balance == 20.0 and user_c_balance == 160.0
+    check2 = user_a_balance == 20.0 and user_b_balance == 20.0 and user_c_balance == 160.0 and BlockChain.is_valid(block_chain_pid)
 
     assert check1 == true and check2 == true
   end
