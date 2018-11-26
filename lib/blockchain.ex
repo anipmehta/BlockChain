@@ -6,7 +6,7 @@ defmodule BlockChain do
     update_mining_reward(pid, 100.0)
     {:ok, user_a_id} = User.start_link()
     add_user(pid, user_a_id)
-    block_1_pid = mine_pending_transactions(pid, User.get_public_key(user_a_id), threshold)
+    mine_pending_transactions(pid, User.get_public_key(user_a_id), threshold)
     # IO.inspect(User.get_public_key(user_a_id))
     {:ok, user_b_id} = User.start_link()
     add_user(pid, user_b_id)
