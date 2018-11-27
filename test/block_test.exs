@@ -4,6 +4,9 @@ defmodule BlockTest do
 
   #validates that the hash of the mined block with threshold 5 starts with 5 zeroes
    test "check hash-code with difficulty 5" do
+     IO.inspect("------Running Block Test Cases--------\n\n\n\n\n\n")
+     test_case_name = "check hash-code with difficulty 5"
+     IO.inspect("--------------Running Test: #{test_case_name}----------------")
      {:ok, pid} = Block.start_link()
      previous_hash = Block.get_previous_hash(pid)
      time_stamp = Integer.to_string(Block.get_time_stamp(pid))
@@ -15,6 +18,8 @@ defmodule BlockTest do
 
 #validates that the hash of the mined block with threshold 3 starts with 3 zeroes
     test "check hash-code with difficulty 3" do
+      test_case_name = "check hash-code with difficulty 3"
+      IO.inspect("--------------Running Test: #{test_case_name}----------------\n")
       {:ok, pid} = Block.start_link()
       previous_hash = Block.get_previous_hash(pid)
       time_stamp = Integer.to_string(Block.get_time_stamp(pid))
@@ -26,12 +31,16 @@ defmodule BlockTest do
 
 #checks the validity of a block with no transactions
      test "block with no Transactions" do
+       test_case_name = "block with no Transactions"
+       IO.inspect("--------------Running Test: #{test_case_name}----------------\n")
        {:ok, pid} = Block.start_link()
        assert Block.is_valid(pid) == true
      end
 
     # verifies that all transactions done within a block are valid
      test "check valid block" do
+       test_case_name = "check valid block"
+       IO.inspect("--------------Running Test: #{test_case_name}----------------\n")
        {:ok, user_a_id} = User.start_link()
        {:ok, user_b_id} = User.start_link()
        user_a_address = User.get_public_key(user_a_id)
@@ -48,6 +57,8 @@ defmodule BlockTest do
 
 #verifies that a block with invalid transactions is flagged as an invalid block
      test "detect invalid block" do
+       test_case_name = "detect invalid block"
+       IO.inspect("--------------Running Test: #{test_case_name}----------------\n")
        {:ok, user_a_id} = User.start_link()
        {:ok, user_b_id} = User.start_link()
        user_a_address = User.get_public_key(user_a_id)

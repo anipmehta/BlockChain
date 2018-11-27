@@ -1,9 +1,11 @@
 defmodule BlockChainTest do
   use ExUnit.Case
   doctest BlockChain
-
 #tests successful initialization of BlockChain
   test "starting a chain with genesis block" do
+    IO.inspect("------Running BlockChain Test Cases--------\n\n\n\n")
+    test_case_name = "starting a chain with genesis block"
+    IO.inspect("--------------Running Test: #{test_case_name}----------------\n")
     {:ok, block_chain_pid} = BlockChain.start_link()
     assert Enum.count(BlockChain.get_chain(block_chain_pid)) == 1
   end
@@ -12,6 +14,8 @@ defmodule BlockChainTest do
 # and that they are in correct order i.e. previous hash of the current block corresponds to
 # the hash of the previous block
   test "valid block chain" do
+    test_case_name = "valid block chain"
+    IO.inspect("--------------Running Test: #{test_case_name}----------------\n")
     difficulty = 2
     {:ok, block_chain_pid} = BlockChain.start_link()
     {:ok, user_a_id} = User.start_link()
@@ -31,6 +35,8 @@ defmodule BlockChainTest do
 
 #detects that the block chain is invalid given one block is invalid
   test "detect invalid block chain" do
+    test_case_name = "detect invalid block chain"
+    IO.inspect("--------------Running Test: #{test_case_name}----------------\n")
     difficulty = 2
     {:ok, block_chain_pid} = BlockChain.start_link()
     {:ok, user_a_id} = User.start_link()
@@ -52,6 +58,8 @@ defmodule BlockChainTest do
 #User A sends $50 to User B
 #User A's balance reduces by $50 while B gains $50
   test "transact 50.0 from user_a to user_b" do
+    test_case_name = "transact 50.0 from user_a to user_b"
+    IO.inspect("--------------Running Test: #{test_case_name}----------------\n")
     difficulty = 2
     {:ok, block_chain_pid} = BlockChain.start_link()
     {:ok, user_a_id} = User.start_link()
@@ -81,6 +89,8 @@ defmodule BlockChainTest do
   # A :20  B:20  C :160 (C received $100 mining reward)
   # The mining reward for B is placed in the pool of pending transaction and it will reflect in B's account once another block takes up this transaction
     test "complex transactions scenario with multiple block and mining Rewards" do
+      test_case_name = "complex transactions scenario with multiple block and mining Rewards"
+      IO.inspect("--------------Running Test: #{test_case_name}----------------")
       difficulty = 4
       {:ok, block_chain_pid} = BlockChain.start_link()
       {:ok, user_a_id} = User.start_link()
@@ -89,6 +99,7 @@ defmodule BlockChainTest do
       mining_reward = 100.0
       BlockChain.update_mining_reward(block_chain_pid, mining_reward)
       BlockChain.mine_pending_transactions(block_chain_pid, user_a_address, difficulty)
+      IO.inspect("first block mined, reward sent to user A")
       {:ok, user_b_id} = User.start_link()
       {:ok, user_c_id} = User.start_link()
       BlockChain.add_user(block_chain_pid, user_b_id)
@@ -105,10 +116,12 @@ defmodule BlockChainTest do
       User.sign_transaction(user_b_id, txn_b_id)
       BlockChain.add_transaction(block_chain_pid, txn_b_id)
       BlockChain.mine_pending_transactions(block_chain_pid, user_c_address, difficulty)
+      IO.inspect("second block mined, reward sent to user C")
 
       user_a_balance = BlockChain.get_balance(block_chain_pid, user_a_address)
       user_b_balance = BlockChain.get_balance(block_chain_pid, user_b_address)
       user_c_balance = BlockChain.get_balance(block_chain_pid, user_c_address)
+      IO.inspect("Balances after before the start of mining of next block..")
       IO.inspect(user_a_balance)
       IO.inspect(user_b_balance)
       IO.inspect(user_c_balance)
@@ -131,6 +144,7 @@ defmodule BlockChainTest do
       user_a_balance = BlockChain.get_balance(block_chain_pid, user_a_address)
       user_b_balance = BlockChain.get_balance(block_chain_pid, user_b_address)
       user_c_balance = BlockChain.get_balance(block_chain_pid, user_c_address)
+      IO.inspect("Balances after end of all transactions......")
       IO.inspect(user_a_balance)
       IO.inspect(user_b_balance)
       IO.inspect(user_c_balance)

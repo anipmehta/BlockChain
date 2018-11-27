@@ -1,11 +1,13 @@
 defmodule TransactionTest do
   use ExUnit.Case
   doctest Transaction
-
 #tests the validity of the transaction
 #User a sends $50 to user b signing with its public_key
 #Here we verify that the transaction was indeed signed by User a
   test "transaction validity" do
+    IO.inspect("------Running Transaction Test Cases--------\n\n\n\n\n")
+    test_case_name = "transaction validity"
+    IO.inspect("--------------Running Test: #{test_case_name}----------------\n")
     {:ok, user_a_id} = User.start_link()
     from_address = User.get_public_key(user_a_id)
     {:ok, user_b_id} = User.start_link()
@@ -21,6 +23,8 @@ defmodule TransactionTest do
    #User b falsely claims that it is he who sent the money to himself
    #We are able to verify that the transaction was not signed by User b
     test "detecting invalid transaction when receiver impersonates the sender" do
+      test_case_name = "detecting invalid transaction when receiver impersonates the sender"
+      IO.inspect("--------------Running Test: #{test_case_name}----------------\n")
       {:ok, user_a_id} = User.start_link()
       user_a_address = User.get_public_key(user_a_id)
       {:ok, user_b_id} = User.start_link()
@@ -36,6 +40,8 @@ defmodule TransactionTest do
     #User C falsely claims that it is he who sent the money
     #We are able to verify that the transaction was not signed by User C
     test "detecting invalid transaction when a different user impersonates the sender" do
+      test_case_name = "detecting invalid transaction when a different user impersonates the sender"
+      IO.inspect("--------------Running Test: #{test_case_name}----------------\n")
       {:ok, user_a_id} = User.start_link()
       user_a_address = User.get_public_key(user_a_id)
       {:ok, user_b_id} = User.start_link()
