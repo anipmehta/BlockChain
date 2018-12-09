@@ -5,7 +5,9 @@ defmodule Blockchain.Application do
   # for more information on OTP Applications
   def start(_type, _args) do
     import Supervisor.Spec
-
+    {:ok, pid} = Chain.start_link()
+    IO.puts('starting block chain with')
+    IO.inspect(pid)
     # Define workers and child supervisors to be supervised
     children = [
       # Start the Ecto repository
