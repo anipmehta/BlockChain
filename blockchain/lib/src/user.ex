@@ -2,7 +2,8 @@ defmodule User do
   use GenServer
   def init([]) do
      {public_key, private_key} = :crypto.generate_key(:ecdh, :crypto.ec_curve(:secp256k1))
-     {:ok, {private_key, public_key, 0.0}}
+     user_id = Nanoid.generate()
+     {:ok, {private_key, public_key, user_id}}
   end
   def start_link() do
     GenServer.start_link(__MODULE__, [])
@@ -19,8 +20,8 @@ defmodule User do
   def get_public_key(pid) do
     GenServer.call(pid, {:getPublicKey})
   end
-  def get_amount(pid) do
-    GenServer.call(pid, {:getAmount})
+  def get_user_id(pid) do
+    GenServer.call(pid, {:getUserId})
   end
   def update_amount(pid, amount) do
     GenServer.cast(pid, {:updateAmount, amount})
@@ -33,7 +34,7 @@ defmodule User do
     {_, public_key, _} = state
     {:reply, public_key, state}
   end
-  def handle_call({:getAmount}, _from, state) do
+  def handle_call({:getUserId}, _from, state) do
     {_, _ , amount} = state
     {:reply, amount, state}
   end

@@ -186,8 +186,8 @@ defmodule Chain do
   end
   def handle_cast({:addUser, user_pid}, state) do
     {a, b, c, d, map} = state
-    user_public_key = User.get_public_key(user_pid)
-    map = Map.put(map, user_public_key, user_pid)
+    user_id = User.get_user_id(user_pid)
+    map = Map.put(map, user_id, user_pid)
     state = {a, b, c, d, map}
     {:noreply, state}
   end

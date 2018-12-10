@@ -6,6 +6,8 @@ defmodule Blockchain.Application do
   def start(_type, _args) do
     import Supervisor.Spec
     {:ok, pid} = Chain.start_link()
+    :ets.new(:buckets_registry, [:named_table])
+    :ets.insert(:buckets_registry, {"block_chain_reference", pid})
     IO.puts('starting block chain with')
     IO.inspect(pid)
     # Define workers and child supervisors to be supervised
