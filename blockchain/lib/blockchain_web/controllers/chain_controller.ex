@@ -5,7 +5,10 @@ defmodule BlockchainWeb.ChainController do
     IO.inspect(Block.get_hash(Chain.get_latest_block(chain_pid)))
     {:ok, user_a_id} = User.start_link()
     Chain.add_user(chain_pid, user_a_id)
-    IO.inspect(User.get_user_id(user_a_id))
-    render(conn, "index.html")
+    IO.puts(User.get_user_id(user_a_id))
+    user_map = Chain.get_user_map(chain_pid)
+    user_balance_map = Enum.map(user_map, fn ({key, pid}) -> {key, Chain.get_balance(chain_pid, pid)} end)
+    IO.inspect(user_balance_map)
+    render(conn, "index.html", map: user_balance_map)
   end
 end
