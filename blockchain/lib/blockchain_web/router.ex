@@ -20,6 +20,10 @@ defmodule BlockchainWeb.Router do
     resources "/transactions", TransactionsController
     get "/user/:user", UserController, :index
     get "/chain", ChainController, :index
+    get "/chain/users/graph", ChainController, :graph
+    get "/chain/users/table", ChainController, :table
+    get "/chain/block/mine_view", ChainController, :mine_view
+    post "/chain/block/mine", ChainController, :mine
   end
 
   # Other scopes may use custom stacks.

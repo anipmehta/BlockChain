@@ -117,6 +117,7 @@ defmodule Chain do
     Block.update_transactions(block_pid, get_pending_transactions(pid))
     Block.recalculate_hash(threshold, block_pid)
     update_pending_transcations(pid, [])
+    IO.inspect(miningRewardAddress)
     {:ok, txn_id} = Transaction.start_link("miningReward", miningRewardAddress, get_mining_reward(pid))
     add_transaction(pid, txn_id)
     IO.inspect(get_pending_transactions(pid))

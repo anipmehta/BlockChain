@@ -5,7 +5,7 @@ defmodule BlockchainWeb.TransactionsController do
   alias Blockchain.BlockChain.Transactions
 
   def index(conn, _params) do
-    transactions = BlockChain.list_transactions()
+    transactions = Chain.list_transactions()
     render(conn, "index.html", transactions: transactions)
   end
 

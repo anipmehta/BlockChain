@@ -1,61 +1,20 @@
-<h2> Charts Page Loaded </h2>
-<canvas id="myChart" width="400" height="450"></canvas>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
-<!-- <table>
-  <tr>
-    <th>User</th>
-    <th>Balance</th>
-  </tr>
-<%= for {key, value} <- @map do %>
-  <tr>
-      <td><%= key %></td>
-      <td><%= value %></td>
-  </tr>
-<% end %>
-</table> -->
-</div>
-<script>
-var labels = []
-var values = []
-<%= for {key, value} <- @map do %>
-  labels.push("<%= key %>");
-  values.push(<%= value %>);
-<% end %>
-var ctx = document.getElementById("myChart").getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: labels,
-        datasets: [{
-            label: '# wallet balance (in ABTC)',
-            data: values,
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
-            }]
-        }
-    }
-});
-</script>
+<h1><span class="blue">&lt;</span>Transactions<span class="blue">&gt;</span> <span class="yellow">Pending</span></h1>
+<h2>Created with love by <a href="http://anipmehta.co" target="_blank">Anip Mehta</a></h2>
+<table class="container">
+	<thead>
+		<tr>
+			<th><h1>From</h1></th>
+			<th><h1>To</h1></th>
+			<th><h1>ABTC</h1></th>
+		</tr>
+	</thead>
+	<tbody>
+    <%= for {from, to, amount} <- @data do %>
+      <tr>
+          <td><%= from %></td>
+          <td><font color="white"><%= to %></font></td>
+          <td><font color="white"><%= amount %></font></td>
+      </tr>
+    <% end %>
+	</tbody>
+</table>
