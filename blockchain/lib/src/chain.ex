@@ -119,6 +119,7 @@ defmodule Chain do
     update_pending_transcations(pid, [])
     {:ok, txn_id} = Transaction.start_link("miningReward", miningRewardAddress, get_mining_reward(pid))
     add_transaction(pid, txn_id)
+    IO.inspect(get_pending_transactions(pid))
     block_pid
   end
   def is_valid(pid) do
