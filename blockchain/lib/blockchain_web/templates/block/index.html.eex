@@ -1,0 +1,23 @@
+<div class="jumbotron">
+  <h2>Welcome <%= @hash %></h2>
+  <h2>Total Number of Transactions: <%= Enum.count(@transactions) %></h2>
+  <h2>Total Transactions Amount: <%= @total_amount %></h2>
+  <table class="container">
+  	<thead>
+  		<tr>
+  			<th><h1>From</h1></th>
+  			<th><h1>To</h1></th>
+  			<th><h1>ABTC</h1></th>
+  		</tr>
+  	</thead>
+  	<tbody>
+      <%= for {from, to, amount} <- @transactions do %>
+        <tr>
+            <td><%= from %></td>
+            <td><font color="white"><%= to %></font></td>
+            <td><font color="white"><%= amount %></font></td>
+        </tr>
+      <% end %>
+  	</tbody>
+  </table>
+</div>

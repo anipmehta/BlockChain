@@ -94,6 +94,15 @@ defmodule Block do
     GenServer.cast(pid, {:updateNonce, nonce})
   end
 
+  def get_transactions_amount(pid) do
+    txns = Block.get_transactions(pid)
+    total_txn_amount = Enum.reduce(txns, 0.0, fn (txn_pid, acc)->
+      txn_amount = Transaction.get_amount(txn_pid)
+      acc + txn_amount
+    end)
+    total_txn_amount
+  end
+
   def is_valid(pid) do
     transactions = get_transactions(pid)
     flag = Enum.reduce(transactions, true, fn(txn_id, acc) ->
