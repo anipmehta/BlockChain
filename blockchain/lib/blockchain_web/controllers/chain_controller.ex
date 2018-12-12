@@ -42,9 +42,7 @@ defmodule BlockchainWeb.ChainController do
   end
   def mine(conn, _params) do
     chain_pid = get_block_chain_reference()
-    IO.inspect(_params)
-    IO.inspect(Map.get(_params, "user"))
     Chain.mine_pending_transactions(chain_pid, Map.get(_params, "user"), 3)
-    render(conn, "mine_block.html")
+    render(conn, "operation_successful.html", message: "Block Mined Successfully", redirect_url: "/chain")
   end
 end

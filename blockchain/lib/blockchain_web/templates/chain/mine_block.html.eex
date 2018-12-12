@@ -1,5 +1,8 @@
+<h2>Mine Block</h2>
+<div id="form" align="center">
 <form action="/chain/block/mine" method="post">
     <input type="hidden" name="_csrf_token" value="<%= Plug.CSRFProtection.get_csrf_token() %>">
-    <input type="text" name="user">
-    <input type="submit">
+    Mining Reward User Address<br></br> <input type="text" name="user"><br></br>
+    <input type="submit" value="Mine Block">
 </form>
+</div>

@@ -13,6 +13,8 @@ defmodule BlockchainWeb.UserController do
     user_balance = Chain.get_balance(chain_pid, user_pid)
     IO.inspect(user_balance)
     public_key = User.get_public_key(user_pid)
-    render(conn, "index.html", user: user, balance: user_balance)
+    users = Map.keys(Chain.get_user_map(chain_pid))
+    IO.inspect(users)
+    render(conn, "index.html", user: user, balance: user_balance, users: users)
   end
 end

@@ -1,4 +1,17 @@
 <div class="jumbotron">
   <h2>Welcome <%= @user %></h2>
   <h2>Balance: <%= @balance %></h2>
+  <form action="/chain/transaction/create" method="post" id="txn_form">
+    Send bitcoin to:&nbsp;&nbsp;
+    <select name="to" from="txn_form">
+      <%= for user_id <- @users do %>
+        <option value="<%= user_id %>"><%= user_id %></option>
+      <% end %>
+    </select>
+  <br></br>
+  <input type="hidden" name="_csrf_token" value="<%= Plug.CSRFProtection.get_csrf_token() %>">
+  <input type="hidden" name="from" value="<%= @user %>">
+  Amount (in ABTC)&nbsp;&nbsp; <input type="text" name="amount"><br></br>
+  <input type="submit" value="Create Transaction">
+  </form>
 </div>

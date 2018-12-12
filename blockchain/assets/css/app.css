@@ -115,6 +115,6 @@ h2 a {
 }
 
 @media (max-width: 800px) {
-.container td:nth-child(4) { color: #FB667A; },
+.container td:nth-child(4),
 .container th:nth-child(4) { display: none; }
 }

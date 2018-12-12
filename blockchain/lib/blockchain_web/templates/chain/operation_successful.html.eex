@@ -1,0 +1,4 @@
+<div align="center">
+  <p><font color="green"> <%= @message %></font></p>
+  <p><a href="<%= @redirect_url %>"><img src="/images/back.png" align="center"></a></p>
+</div>
