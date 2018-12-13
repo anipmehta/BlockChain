@@ -45,4 +45,15 @@ defmodule BlockchainWeb.ChainController do
     Chain.mine_pending_transactions(chain_pid, Map.get(_params, "user"), 3)
     render(conn, "operation_successful.html", message: "Block Mined Successfully", redirect_url: "/chain")
   end
+
+  def show_block_graph(conn, _params) do
+    chain_pid = get_block_chain_reference()
+    blocks = Chain.get_chain(chain_pid)
+    block_amount_map = Enum.map(blocks, fn(block_pid) ->
+      hash = Block.get_hash(block_pid)
+      block_txns_amount = Block.get_transactions_amount(block_pid)
+      {hash, block_txns_amount}
+    end)
+    render(conn, "block_graph.html", map: block_amount_map)
+  end
 end
