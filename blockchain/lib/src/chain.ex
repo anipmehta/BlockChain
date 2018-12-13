@@ -19,13 +19,9 @@ defmodule Chain do
     # IO.inspect(txn_a_id)
     # IO.inspect(Transaction.get_amount(txn_a_id))
     IO.inspect("original balances.....")
-    IO.inspect(User.get_amount(user_a_id))
-    IO.inspect(User.get_amount(user_b_id))
     block_2_pid = mine_pending_transactions(pid, User.get_public_key(user_b_id), threshold)
-    IO.inspect(Block.is_valid(block_2_pid))
+    IO.inspect(Block.is_valid(block_2_pid, pid))
     IO.inspect("updated balances.....")
-    IO.inspect(User.get_amount(user_a_id))
-    IO.inspect(User.get_amount(user_b_id))
     IO.inspect(is_valid(pid))
     IO.inspect(get_balance(pid, User.get_public_key(user_a_id)))
     IO.inspect(get_balance(pid, User.get_public_key(user_b_id)))
@@ -34,7 +30,6 @@ defmodule Chain do
     # IO.inspect(get_pending_transactions(pid))
   end
   def init([]) do
-    timestamp = :erlang.system_time / 1.0e6 |> round
     genesis_block = create_genesis_block()
     {:ok, {[] ++ [genesis_block], 1, [], 0, %{}}}
   end
@@ -53,27 +48,6 @@ defmodule Chain do
     balance
   end
 
-  def process_block_transactions(pid, block_pid) do
-    transactions = Block.get_transactions(block_pid)
-    IO.inspect("processing all pending transactions.....")
-    Enum.each(transactions, fn txn_id ->
-      # TODO check if valid transactions
-      is_valid = Transaction.verify_transaction(txn_id, Transaction.get_from_address(txn_id))
-      if is_valid do
-        process_single_transaction(pid, txn_id)
-      else
-        IO.inspect("Invalid transaction signature does not match, adding it back to the pool of unconfirmed transactions..")
-        add_transaction(pid, txn_id)
-      end
-    end)
-  end
-  def process_single_transaction(pid, txn_id) do
-    from_user = get_user(pid, Transaction.get_from_address(txn_id))
-    to_user = get_user(pid, Transaction.get_to_address(txn_id))
-    amount = Transaction.get_amount(txn_id)
-    User.update_amount(from_user, User.get_amount(from_user) - amount)
-    User.update_amount(to_user, User.get_amount(to_user) + amount)
-  end
   def update_pending_transcations(pid, transactions) do
     GenServer.cast(pid, {:updatePendingTransactions, transactions})
   end
@@ -130,7 +104,7 @@ defmodule Chain do
       previous_block = Enum.fetch!(chain, index-1)
       current_block = Enum.fetch!(chain, index)
       hash_is_valid = Block.get_hash(previous_block) == Block.get_previous_hash(current_block)
-      acc and hash_is_valid and Block.is_valid(current_block)
+      acc and hash_is_valid and Block.is_valid(current_block, pid)
     end)
     is_valid
   end
