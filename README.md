@@ -1,4 +1,4 @@
-# Blockchain
+# Blockchain (Project 4.2)
 
 ## Installation
 To start your Phoenix server:
@@ -27,8 +27,26 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
 
   ## What we have implemented:
 
-  1. Distributed blockchain
+  1. Simulation of distributed blockchain protocol (built over 4.1)
+  2. A web interface using Phoenix that allows access to the simulation using a web browser.
+    The simulation has the following capabilities:
+    New users can join the system, send bitcoins to each other and mine new blocks.
+    The transactions of the users get added to a pool of pending transactions.
+    A block can pick transactions from the pool and complete after verification.
+    At any instance of time, one can view the users and their respective balance in the users graph.
+    Also, one can view the bitcoins transacted by each block in another graph. 
+    
+    A brief walkthrough of the code and functionality is expalianed in a short video.
+    Below are the screenshots of the functionality as seen in the browser :
+    
+    Scenario 1:
 
 ## Instructions
 
 1.Perform the steps outlined in installation above.
+2. Go to (http://localhost:4000)
+3. Perform the steps mentioned in scenarios above making use of the screenshots.
+
+## Bonus 
+
+Implemented an interface for "transacting" bitcoins using Phoenix and made it part of the simulated network.
