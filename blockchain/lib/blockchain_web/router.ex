@@ -23,6 +23,7 @@ defmodule BlockchainWeb.Router do
     get "/chain/users/graph", ChainController, :graph
     get "/chain/users/table", ChainController, :table
     get "/chain/block/mine", ChainController, :mine_view
+    get "/chain/blocks", ChainController, :view_blocks
     post "/chain/block/mine", ChainController, :mine
     post "/chain/transaction/create", TransactionController, :create
     get "/block/:hash", BlockController, :index

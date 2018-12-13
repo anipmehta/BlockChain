@@ -56,4 +56,13 @@ defmodule BlockchainWeb.ChainController do
     end)
     render(conn, "block_graph.html", map: block_amount_map)
   end
+  
+  def view_blocks(conn, _params) do
+    chain_pid = get_block_chain_reference()
+    blocks = Chain.get_chain(chain_pid)
+    block_hash_list = Enum.reduce(blocks, [], fn(block_pid, acc) ->
+      acc ++ [Block.get_hash(block_pid)]
+    end)
+    render(conn, "view_all_blocks.html", list: block_hash_list)
+  end
 end
