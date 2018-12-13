@@ -11,7 +11,8 @@ defmodule BlockchainWeb.TransactionController do
     IO.inspect(_params)
     from = Map.get(_params, "from")
     to = Map.get(_params, "to")
-    amount = String.to_float(Map.get(_params, "amount"))
+    amount_string = Map.get(_params, "amount")
+    amount = if amount_string =~ "." do String.to_float(amount_string) else String.to_float(amount_string<>".0") end
     {:ok, txn_id} = Transaction.start_link(from, to, amount)
     IO.inspect(txn_id)
     from_pid = Map.get(Chain.get_user_map(chain_pid), from)
