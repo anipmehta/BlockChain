@@ -27,7 +27,7 @@ defmodule BlockchainWeb.Router do
     post "/chain/block/mine", ChainController, :mine
     post "/chain/transaction/create", TransactionController, :create
     get "/block/:hash", BlockController, :index
-    get("/chain/blocks/graph", ChainController, :show_block_graph)
+    get "/chain/blocks/graph", ChainController, :show_block_graph
   end
 
   # Other scopes may use custom stacks.
