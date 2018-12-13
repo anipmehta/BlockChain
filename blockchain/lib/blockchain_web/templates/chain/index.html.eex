@@ -1,5 +1,9 @@
 <h1><span class="blue">&lt;</span>Transactions<span class="blue">&gt;</span> <span class="yellow">Pending</span></h1>
 <h2>Created with love by <a href="http://anipmehta.co" target="_blank">Anip Mehta</a></h2>
+<form action="/chain/user/create" method="post">
+	<input type="hidden" name="_csrf_token" value="<%= Plug.CSRFProtection.get_csrf_token() %>">
+	<input type="submit" value="Create User">
+</form>
 <table class="container">
 	<thead>
 		<tr>
