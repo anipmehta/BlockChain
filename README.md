@@ -30,13 +30,14 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
   * Simulation of distributed blockchain protocol (built over 4.1)
   *  A web interface using Phoenix that allows access to the simulation using a web browser.
     The simulation has the following capabilities:
-    New users can join the system, send bitcoins to each other and mine new blocks.
-    The transactions of the users get added to a pool of pending transactions.
-    A block can pick transactions from the pool and complete after verification.
-    At any instance of time, one can view the users and their respective balance in the users graph.
-    Also, one can view the bitcoins transacted by each block in another graph. 
+     * New users can join the system, send bitcoins to each other and mine new blocks.
+     * The transactions of the users get added to a pool of pending transactions.
+     * A block can pick transactions from the pool and complete after verification.
+     * At any instance of time, one can view the users and their respective balance in the users graph.
+     * Also, one can view the bitcoins transacted by each block in another graph. 
     A brief walkthrough of the code and functionality is expalianed in a short video.
     Below are the screenshots of the functionality as seen in the browser :
+    
   ### Scenario 1:
   
 ## Instructions
