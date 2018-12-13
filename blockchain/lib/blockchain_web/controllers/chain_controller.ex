@@ -53,4 +53,10 @@ defmodule BlockchainWeb.ChainController do
     end)
     render(conn, "view_all_blocks.html", list: block_hash_list)
   end
+  def create_user(conn, _params) do
+    chain_pid = get_block_chain_reference()
+    user_id = User.start_link()
+    Chain.add_user(chain_pid,user_id)
+    render(conn, "operation_successful.html", message: "User created Successfully with user id: "<> User.get_user_id(user_id), redirect_url: "/chain")
+  end
 end
