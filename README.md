@@ -1,5 +1,6 @@
 # Blockchain
 
+## Installation
 To start your Phoenix server:
 
   * `cd blockchain`
@@ -19,7 +20,15 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
   * Docs: https://hexdocs.pm/phoenix
   * Mailing list: http://groups.google.com/group/phoenix-talk
   * Source: https://github.com/phoenixframework/phoenix
+  
+  # Group Info
+ - Anip Mehta  UFID : 96505636
+ - Aniket Sinha UFID : 69598035
 
   ## What we have implemented:
 
   1. Distributed blockchain
+
+## Instructions
+
+1.Perform the steps outlined in installation above.
