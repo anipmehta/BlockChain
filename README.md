@@ -43,9 +43,9 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
 
 ## Instructions
 
-1.Perform the steps outlined in installation above.
-2. Go to (http://localhost:4000)
-3. Perform the steps mentioned in scenarios above making use of the screenshots.
+* Perform the steps outlined in installation above.
+* Go to (http://localhost:4000)
+* Perform the steps mentioned in scenarios above making use of the screenshots.
 
 ## Bonus 
 
