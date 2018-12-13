@@ -1,0 +1,12 @@
+<table>
+  <tr>
+    <th>Block_Hash</th>
+    <th>Action</th>
+  </tr>
+<%= for hash <- @list do %>
+  <tr>
+      <td><%= hash %></td>
+      <td><a href="/block/<%= hash %>"<button type="button">View</button></td>
+  </tr>
+<% end %>
+</table>
