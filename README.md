@@ -2,6 +2,7 @@
 
 To start your Phoenix server:
 
+  * `cd blockchain`
   * Install dependencies with `mix deps.get`
   * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
   * Install Node.js dependencies with `cd assets && npm install`
@@ -18,7 +19,7 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
   * Docs: https://hexdocs.pm/phoenix
   * Mailing list: http://groups.google.com/group/phoenix-talk
   * Source: https://github.com/phoenixframework/phoenix
-  
+
   ## What we have implemented:
-  
-  1. Distributed blockchain 
+
+  1. Distributed blockchain
