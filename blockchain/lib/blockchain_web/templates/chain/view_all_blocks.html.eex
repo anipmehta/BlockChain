@@ -1,12 +1,17 @@
-<table>
-  <tr>
-    <th>Block_Hash</th>
-    <th>Action</th>
-  </tr>
-<%= for hash <- @list do %>
-  <tr>
-      <td><%= hash %></td>
-      <td><a href="/block/<%= hash %>"<button type="button">View</button></td>
-  </tr>
-<% end %>
+<h2>Blocks</h2>
+<table class="container">
+    <thead>
+    <tr>
+      <th>Block_Hash</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  <%= for hash <- @list do %>
+    <tr>
+        <td><%= hash %></td>
+        <td><a href="/block/<%= hash %>"<button type="button">View</button></td>
+        </tr>
+    <% end %>
+  </tbody>
 </table>
