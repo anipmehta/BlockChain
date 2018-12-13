@@ -3,6 +3,7 @@
   <h2>Total Number of Transactions: <%= Enum.count(@transactions) %></h2>
   <h2>Total Transactions Amount: <%= @total_amount %></h2>
   <h3><font color="red">Number Of BitCoin's Mined: </font><%= @bitcoins_mined %></h3>
+  <h3><font color="green">Block Validity: </font><%= @valid %></h3>
   <table class="container">
   	<thead>
   		<tr>

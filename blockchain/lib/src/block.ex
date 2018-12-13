@@ -103,13 +103,13 @@ defmodule Block do
     total_txn_amount
   end
 
-  def is_valid(pid) do
+  def is_valid(pid, chain_pid) do
     transactions = get_transactions(pid)
     flag = Enum.reduce(transactions, true, fn(txn_id, acc) ->
       if Transaction.get_from_address(txn_id) == "miningReward" do
         true
       else
-        acc and Transaction.verify_transaction(txn_id, Transaction.get_from_address(txn_id))
+        acc and Transaction.verify_transaction(txn_id, User.get_public_key(Map.get(Chain.get_user_map(chain_pid), Transaction.get_from_address(txn_id))))
       end
     end)
     flag

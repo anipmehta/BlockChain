@@ -56,7 +56,7 @@ defmodule BlockchainWeb.ChainController do
     end)
     render(conn, "block_graph.html", map: block_amount_map)
   end
-  
+
   def view_blocks(conn, _params) do
     chain_pid = get_block_chain_reference()
     blocks = Chain.get_chain(chain_pid)
@@ -70,5 +70,12 @@ defmodule BlockchainWeb.ChainController do
     {:ok, user_id} = User.start_link()
     Chain.add_user(chain_pid,user_id)
     render(conn, "operation_successful.html", message: "User created Successfully with user id: "<> User.get_user_id(user_id), redirect_url: "/chain")
+  end
+
+  def view_users(conn, _params) do
+    chain_pid = get_block_chain_reference()
+    users = Map.keys(Chain.get_user_map(chain_pid))
+    IO.inspect(users)
+    render(conn, "view_all_users.html", users: users)
   end
 end

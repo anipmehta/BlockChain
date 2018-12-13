@@ -1,0 +1,17 @@
+<h2>Users</h2>
+<table class="container">
+	<thead>
+		<tr>
+			<th><h1>User</h1></th>
+			<th><h1>Action</h1></th>
+		</tr>
+	</thead>
+	<tbody>
+    <%= for user <- @users do %>
+      <tr>
+          <td><%= user %></td>
+          <td><a href="/user/<%= user %>"<button type="button">View</button></td>
+      </tr>
+    <% end %>
+	</tbody>
+</table>

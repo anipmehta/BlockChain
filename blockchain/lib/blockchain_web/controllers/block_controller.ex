@@ -41,6 +41,7 @@ defmodule BlockchainWeb.BlockController do
     block_txns_amount = Block.get_transactions_amount(block_pid)
     IO.inspect(txn_details)
     render(conn, "index.html", hash: hash, total_amount: block_txns_amount,
-    bitcoins_mined: no_of_blocks_mined, transactions: txn_details)
+    bitcoins_mined: no_of_blocks_mined, transactions: txn_details,
+    valid: Block.is_valid(block_pid, chain_pid))
   end
 end
