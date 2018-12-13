@@ -1,4 +1,5 @@
 <h2>Users</h2>
+<h4> Total Users: <font color="blue"><%= Enum.count(@users) %> </font></h4>
 <table class="container">
 	<thead>
 		<tr>

@@ -1,9 +1,18 @@
-<h1><span class="blue">&lt;</span>Transactions<span class="blue">&gt;</span> <span class="yellow">Pending</span></h1>
-<h2>Created with love by <a href="http://anipmehta.co" target="_blank">Anip Mehta</a></h2>
-<form action="/chain/user/create" method="post">
+<h1><span class="blue">&lt;</span>Pending<span class="blue">&gt;</span> <span class="yellow"><font color="red">Transactions</font></span></h1>
+<br></br>
+<div align="right">
+	<form action="/chain/user/create" method="post">
 	<input type="hidden" name="_csrf_token" value="<%= Plug.CSRFProtection.get_csrf_token() %>">
-	<input type="submit" value="Create User">
-</form>
+	<input type="submit" value="Create User" style="float: left;">
+	</form>
+	<a href="/chain/blocks"><input type="submit" value="View Blocks" style="float: left;" align="center"></a>
+	<a href="/chain/users"><input type="submit" value="View Users" style="float: left;"></a>
+	<a href="/chain/users/graph"><input type="submit" value="User Balance Graph" style="float: right;"></a>
+	<a href="/chain/blocks/graph"><input type="submit" value="Block Transaction Graph" style="float: right;" align="center"></a>
+	<a href="/chain/block/mine"><input type="submit" value="Mine Block" style="float: right;"></a>
+</div>
+<br></br>
+<br></br>
 <table class="container">
 	<thead>
 		<tr>
