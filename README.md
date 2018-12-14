@@ -112,9 +112,9 @@ This was a walkthrough of the basic functionality implemented.
   
 ## Instructions
 
-* Perform the steps outlined in installation above.
+* Execute all the commands outlined in installation.
 * Go to (http://localhost:4000)
-* Perform the steps mentioned in scenarios above making use of the screenshots.
+* Perform the steps shown in the screenshots above.
 
 ## Bonus 
 
