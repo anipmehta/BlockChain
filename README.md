@@ -38,6 +38,8 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
    #### A brief walkthrough of the code and functionality is expalianed in a short video.
    #### Below are the screenshots of the functionality as seen in the browser :
    
+   This is the first page you see when you go to (http://localhost:4000)
+   
    ![image](https://user-images.githubusercontent.com/4914264/49977027-8fb07300-ff12-11e8-9641-ca6d64c7c19c.png)
    
    click on continue
@@ -108,15 +110,7 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
    ![image](https://user-images.githubusercontent.com/4914264/49978274-be7d1800-ff17-11e8-98e8-3d5c072f84d1.png)
    
    
-
-   
-   
-   
-   
-   
-
-   
-  ### Scenario 1:
+This was a walkthrough of the basic functionality implemented. #### For a more complex scenario where we have more than 100 users, please visit the video link. 
   
 ## Instructions
 
