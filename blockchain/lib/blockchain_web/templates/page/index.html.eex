@@ -1,4 +1,11 @@
 <div class="jumbotron">
-  <h2><%= gettext "Welcome to %{name}!", name: "Anip's BlockChain" %></h2>
-  <p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
+  <h2><%= gettext "Welcome to %{name}!", name: "¯\\_(ツ)_/¯ BlockChain! Simulation" %></h2>
+  <h3>Functionalities:</h3><br></br>
+  <p> -     Add New Users</p>
+  <p> -     Mine New Block</p>
+  <p> -     User Can Create Transactions<p>
+  <p> -     View Details of BLock and Users</p>
+  <p> -     Analyzing Various Block Chain Metrics on Graph</p>
+  <br></br>
+  <a href="/chain"><input type="submit" value="Continue"></a>
 </div>

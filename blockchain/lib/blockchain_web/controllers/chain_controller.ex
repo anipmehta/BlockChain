@@ -8,10 +8,10 @@ defmodule BlockchainWeb.ChainController do
 
   def index(conn, _params) do
     chain_pid = get_block_chain_reference()
-    {:ok, user_a_id} = User.start_link()
-    Chain.add_user(chain_pid, user_a_id)
+    # {:ok, user_a_id} = User.start_link()
+    # Chain.add_user(chain_pid, user_a_id)
     Chain.update_mining_reward(chain_pid, 100.0)
-    IO.inspect(User.get_user_id(user_a_id))
+    # IO.inspect(User.get_user_id(user_a_id))
     # Chain.mine_pending_transactions(chain_pid, User.get_user_id(user_a_id), 3)
     pending_transactions = Chain.get_pending_transactions(chain_pid)
     txn_details = Enum.reduce(pending_transactions, [], fn txn_id, acc->
@@ -38,7 +38,9 @@ defmodule BlockchainWeb.ChainController do
     render(conn, "user_graph.html", map: user_balance_map)
   end
   def mine_view(conn, _params) do
-    render(conn, "mine_block.html")
+    chain_pid = get_block_chain_reference()
+    users = Map.keys(Chain.get_user_map(chain_pid))
+    render(conn, "mine_block.html", users: users)
   end
   def mine(conn, _params) do
     chain_pid = get_block_chain_reference()

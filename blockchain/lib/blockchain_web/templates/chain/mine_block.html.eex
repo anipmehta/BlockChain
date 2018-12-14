@@ -2,7 +2,13 @@
 <div id="form" align="center">
 <form action="/chain/block/mine" method="post">
     <input type="hidden" name="_csrf_token" value="<%= Plug.CSRFProtection.get_csrf_token() %>">
-    Mining Reward User Address<br></br> <input type="text" name="user"><br></br>
+    Mining Reward User Address<br></br>
+    <select name="user" from="txn_form">
+      <%= for user_id <- @users do %>
+        <option value="<%= user_id %>"><%= user_id %></option>
+      <% end %>
+    </select>
+  <br></br>
     <input type="submit" value="Mine Block">
 </form>
 </div>

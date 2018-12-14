@@ -118,3 +118,13 @@ h2 a {
 .container td:nth-child(4),
 .container th:nth-child(4) { display: none; }
 }
+ul{
+  margin:0;
+  padding:0 20px;
+}
+ul li    {
+  padding:0;
+  width:150px;
+  background:None;
+  margin:10px 0;
+}

@@ -10,7 +10,7 @@ defmodule BlockchainWeb.UserController do
     # TODO: add to things public key and balanceb
     chain_pid = get_block_chain_reference()
     user_pid = Map.get(Chain.get_user_map(chain_pid), user)
-    user_balance = Chain.get_balance(chain_pid, user_pid)
+    user_balance = Chain.get_balance(chain_pid, user)
     IO.inspect(user_balance)
     public_key = User.get_public_key(user_pid)
     users = Map.keys(Chain.get_user_map(chain_pid))

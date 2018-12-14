@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hello Blockchain!</title>
+    <title>¯\_(ツ)_/¯ Blockchain!</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
@@ -15,7 +15,7 @@
     <div class="container">
       <header class="header">
         <nav role="navigation">
-          <h1>Anip's BlockChain</h1>
+          <h1>¯\_(ツ)_/¯ BlockChain</h1>
         </nav>
         <!-- <span class="logo"></span> -->
       </header>
