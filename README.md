@@ -80,7 +80,38 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
    
    ![image](https://user-images.githubusercontent.com/4914264/49977729-76f58c80-ff15-11e8-8354-321d7bc3cf3c.png)
    
-   Go to view user. Click on View button of 2nd (earlier) user.
+   Go to view user. Click on View button of 2nd (earlier) user. 
+   Send 23 bitcoins to the newly created user. Click on create transaction.
+   
+   ![image](https://user-images.githubusercontent.com/4914264/49977865-f6835b80-ff15-11e8-8201-a45647ee407d.png)
+   
+   You will see 2 pending transactions one mining reward for the previus block and the other for sending the bitcoins.
+   Mine another block that will process these transactions.
+   
+   ![image](https://user-images.githubusercontent.com/4914264/49978019-8d501800-ff16-11e8-9bd8-58fb62903222.png)
+   
+   Click on vew user. Click on the view button of the user F5VElBhAY6joKm9E3588B.
+   You can see his balance has increased to 23 bitcoins.
+   
+   ![image](https://user-images.githubusercontent.com/4914264/49978095-e3bd5680-ff16-11e8-96b7-c3a53d0fc13a.png)
+   
+   Now check the balance of the other user in the same way. His balance must be 200(mining reward for mining 2 blocks) - 23 (amount sent to other user) = 177.
+   
+   ![image](https://user-images.githubusercontent.com/4914264/49978159-3d258580-ff17-11e8-8b5e-e2d15466b196.png)
+   
+   You can view the amount transacted by the blocks in a chart by clicking on Block Transaction Graph.
+   
+   ![image](https://user-images.githubusercontent.com/4914264/49978229-837ae480-ff17-11e8-8010-a80addc3a0e8.png)
+   
+   You can see the users' balance as a graph by clicking on User balance graph.
+   
+   ![image](https://user-images.githubusercontent.com/4914264/49978274-be7d1800-ff17-11e8-98e8-3d5c072f84d1.png)
+   
+   
+
+   
+   
+   
    
    
 
