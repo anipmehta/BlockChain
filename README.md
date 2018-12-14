@@ -115,6 +115,7 @@ This was a walkthrough of the basic functionality implemented.
 * Execute all the commands outlined in installation.
 * Go to (http://localhost:4000)
 * Perform the steps shown in the screenshots above.
+* Video link : https://youtu.be/-4Icdpg83Iw
 
 ## Bonus 
 
