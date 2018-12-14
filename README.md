@@ -76,6 +76,12 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
    
    ![image](https://user-images.githubusercontent.com/4914264/49977641-18c8a980-ff15-11e8-9bfe-d71d186db9a4.png)
    
+   Create another user.
+   
+   ![image](https://user-images.githubusercontent.com/4914264/49977729-76f58c80-ff15-11e8-8354-321d7bc3cf3c.png)
+   
+   Go to view user. Click on View button of 2nd (earlier) user.
+   
    
 
    
