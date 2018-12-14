@@ -39,6 +39,10 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
    #### Below are the screenshots of the functionality as seen in the browser :
    
    ![image](https://user-images.githubusercontent.com/4914264/49977027-8fb07300-ff12-11e8-9641-ca6d64c7c19c.png)
+   
+   click on continue
+   
+   
 
    
    
