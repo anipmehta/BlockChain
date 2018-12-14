@@ -42,8 +42,10 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
    
    click on continue
    
-   
+   ![image](https://user-images.githubusercontent.com/4914264/49977103-02215300-ff13-11e8-906a-ca2b91a61313.png)
 
+   click on create user
+   
    
    
   ### Scenario 1:
