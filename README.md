@@ -37,8 +37,11 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
      * Also, one can view the bitcoins transacted by each block in another graph. 
    #### A brief walkthrough of the code and functionality is expalianed in a short video.
    #### Below are the screenshots of the functionality as seen in the browser :
-    The welcome page:
-    ![image](https://user-images.githubusercontent.com/4914264/49976978-5546d600-ff12-11e8-915b-d2b859feec5f.png)
+   
+   ![image](https://user-images.githubusercontent.com/4914264/49977027-8fb07300-ff12-11e8-9641-ca6d64c7c19c.png)
+
+   
+   
   ### Scenario 1:
   
 ## Instructions
