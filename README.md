@@ -46,7 +46,38 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
 
    click on create user
    
+   ![image](https://user-images.githubusercontent.com/4914264/49977190-588e9180-ff13-11e8-85eb-7c10589e245d.png)
+    
+   New user has been created. Click on view user.
    
+   ![image](https://user-images.githubusercontent.com/4914264/49977190-588e9180-ff13-11e8-85eb-7c10589e245d.png)
+
+   Go back and click on mine block
+   
+   ![image](https://user-images.githubusercontent.com/4914264/49977276-b622de00-ff13-11e8-8bb3-82e547a188c7.png)
+   
+   Click on mine block.
+   
+   ![image](https://user-images.githubusercontent.com/4914264/49977309-dce11480-ff13-11e8-8c94-5902853c0455.png)
+   
+   Go back. Now you see one pending transaction that of the mining reward.  
+   
+   ![image](https://user-images.githubusercontent.com/4914264/49977366-1d409280-ff14-11e8-8f93-b9327c6e4db2.png)
+   
+   Mine another block by the same user.
+   
+   ![image](https://user-images.githubusercontent.com/4914264/49977428-51b44e80-ff14-11e8-8caa-061ac1c84287.png)
+   
+   Go to view users. Click on View button.
+   
+   ![image](https://user-images.githubusercontent.com/4914264/49977499-8aecbe80-ff14-11e8-8e7c-ae003665cfc0.png)
+
+   You will see the mining reward for mining previous block appear in user's balance.
+   
+   ![image](https://user-images.githubusercontent.com/4914264/49977641-18c8a980-ff15-11e8-9bfe-d71d186db9a4.png)
+   
+   
+
    
   ### Scenario 1:
   
