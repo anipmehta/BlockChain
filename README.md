@@ -35,7 +35,7 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
      * A block can pick transactions from the pool and complete after verification.
      * At any instance of time, one can view the users and their respective balance in the users graph.
      * Also, one can view the bitcoins transacted by each block in another graph. 
-   #### A brief walkthrough of the code and functionality is expalianed in a short video.
+   #### A brief walkthrough of the code and functionality is expalianed in a short video (link : https://youtu.be/-4Icdpg83Iw).
    #### Below are the screenshots of the functionality as seen in the browser :
    
    This is the first page you see when you go to (http://localhost:4000)
@@ -108,7 +108,7 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
    
    
 This was a walkthrough of the basic functionality implemented.
-#### For a more complex scenario where we have more than 100 users, please visit the video link. 
+#### For a more complex scenario where we have more than 100 users, please visit the video link (https://youtu.be/-4Icdpg83Iw). 
   
 ## Instructions
 
