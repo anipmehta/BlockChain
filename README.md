@@ -50,10 +50,7 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
    
    ![image](https://user-images.githubusercontent.com/4914264/49977190-588e9180-ff13-11e8-85eb-7c10589e245d.png)
     
-   New user has been created. Click on view user.
-   
-   ![image](https://user-images.githubusercontent.com/4914264/49977190-588e9180-ff13-11e8-85eb-7c10589e245d.png)
-
+   New user has been created. Click on view user. You will see one row for a new user.
    Go back and click on mine block
    
    ![image](https://user-images.githubusercontent.com/4914264/49977276-b622de00-ff13-11e8-8bb3-82e547a188c7.png)
